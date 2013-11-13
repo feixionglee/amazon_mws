@@ -1,0 +1,7 @@
+# AWS_MARKETPLACE_ID = 'Your MERKETPLACE_ID'
+# AWS_ENDPOINT = 'Your ENDPOINT'   # e.g. https://mws.amazonservices.ca
+
+# AWS_MERCHANT_ID = 'Your MERCHANT_ID'
+
+# AWS_ACCESS_KEY_ID = 'Your ACCESS_KEY_ID'
+# AWS_SECRET_KEY = 'Your SECRET_KEY'

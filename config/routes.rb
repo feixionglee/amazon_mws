@@ -3,7 +3,16 @@ Amazon::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'base#index'
+
+  namespace :amazon do
+    controller :feeds do
+      get 'submit_feed' => :submit_feed
+      get 'get_feed_submission_list' => :get_feed_submission_list
+      get 'get_feed_submission_count' => :get_feed_submission_count
+      get 'get_feed_submission_result/:subsession_id' => :get_feed_submission_result
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -39,7 +48,7 @@ Amazon::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
