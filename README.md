@@ -12,4 +12,4 @@ signature parameters for your request to amazon
 
 You can clone it to your localhost, config with your amazon key & secret, put it into config/initializes
 
-[config/initializes/amazon_mws.rb](config/initializes/amazon_mws.rb)
+[config/initializers/amazon_mws.rb](config/initializers/amazon_mws.rb)
