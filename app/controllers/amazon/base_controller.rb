@@ -27,13 +27,19 @@ class Amazon::BaseController < ApplicationController
     end
   end
 
-  def params_signed http_action, query_hash
-    string_to_sign = build_string_to_sign(http_action, query_hash)
+  def params_signed request, query_hash
+    string_to_sign = build_string_to_sign(request, query_hash)
     signature = OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), AWS_SECRET_KEY, string_to_sign)
     query_hash.merge!(Signature: Base64.strict_encode64(signature))
   end
 
-  def build_string_to_sign http_action, query_hash
-    http_action.to_s.upcase + "\n" + URI.parse(AWS_ENDPOINT).host + "\n" + "/" + "\n" + query_hash.to_param
+  def build_string_to_sign request, query_hash
+    request.method.to_s.upcase
+    .concat("\n")
+    .concat(URI.parse(AWS_ENDPOINT).host)
+    .concat("\n")
+    .concat(request.path)
+    .concat("\n")
+    .concat(query_hash.to_param)
   end
 end

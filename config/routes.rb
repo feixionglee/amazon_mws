@@ -12,6 +12,10 @@ Amazon::Application.routes.draw do
       get 'get_feed_submission_count' => :get_feed_submission_count
       get 'get_feed_submission_result/:subsession_id' => :get_feed_submission_result
     end
+
+    controller :orders do
+      get 'list_orders' => :list_orders
+    end
   end
 
   # Example of regular route:
