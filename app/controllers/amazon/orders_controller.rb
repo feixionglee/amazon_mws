@@ -31,4 +31,20 @@ class Amazon::OrdersController < Amazon::BaseController
     end
     render :feed
   end
+
+  def list_order_items
+    conn = get_conn
+    query = build_query(
+              Action: "ListOrderItems",
+              Version: '2011-01-01',
+              AmazonOrderId: params[:id],
+              SellerId: AWS_MERCHANT_ID
+            )
+    @resp = conn.get do |req|
+      req.url "/Orders/2011-11-01" # set req.url used by params_signed method
+      req.url "/Orders/2011-11-01?#{params_signed(req, query).to_param}"
+      req.headers['Content-Type'] = 'application/xml'
+    end
+    render :feed
+  end
 end

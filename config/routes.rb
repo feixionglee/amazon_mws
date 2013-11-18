@@ -16,6 +16,7 @@ Amazon::Application.routes.draw do
     controller :orders do
       get 'list_orders' => :list_orders
       get 'get_order/:id' => :get_order
+      get 'list_order_items/:id' => :list_order_items
     end
   end
 
